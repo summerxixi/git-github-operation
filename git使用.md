@@ -31,5 +31,9 @@
 
 `git reset --hard HEAD~1 `
 撤销最近一次的commit(撤销commit，撤销git add，工作区的代码改动将丢失。操作完成后回到上一次commit状态)
+
+回退之后便是要撤销远程仓库的push了，使用push操作git push origin <分支> --force进行撤销
 ### 回退上一版本  
 ` git reset HEAD`
+
+
