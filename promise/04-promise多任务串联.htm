@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let  p = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve("OK")
+        },1000)
+    })
+    console.log("yyyyy")
+    p.then(value=>{
+        console.log(value)
+    }).then(value=>{
+        console.log(value)// 因为该value之前的p.then没有promise的返回值，即resolve的返回值，所以虽然是成功的返回.then
+        //但是由于没有返回值，是undefined
+    }).then(value=>{
+        console.log('333')
+    }).then(value=>{
+        throw '失败啦'
+    }).catch(reason=>{
+        console.warn(reason)
+    })
+
+    //promise中断
+    let p1 = new Promise((resolve, reject) => {setTimeout(() => { 
+        resolve('OK1');
+    }, 1000);
+    });
+    
+    p1.then(value => {
+        console.log(value)
+        console.warn('中断promise')
+        return new Promise(() => {});
+    })//有且只有这一个方式
+    .then(value => { console.log(222);})
+    .then(value => { console.log(333);})
+    .catch(reason => {console.warn(reason);});
+</script>
+</html>

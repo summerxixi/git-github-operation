@@ -11,5 +11,5 @@ function sendAjax(url){
         else{reject(params)}
     })
 }
-ssendAjax(url).then(success=>{},err=>{})
+sendAjax(url).then(success=>{},err=>{})
 ```
